@@ -78,7 +78,7 @@ public class Circuit {
             if(element.type == Component.ComponentType.INDUCTOR) {
                 double L = element.value;
 
-                if(element.nodeIn == 0) {           // What happens with ground here? Assuming we just ignore
+                if(element.nodeIn == 0) {
                     addToMatrix(G, element.nodeOut, current_inductor_offset, -1);
                     addToMatrix(G, current_inductor_offset, element.nodeOut, -1);
                 } else if (element.nodeOut == 0) {
@@ -112,7 +112,7 @@ public class Circuit {
             if(element.type == Component.ComponentType.INDEPENDENT_VOLTAGE_SOURCE) {
                 double E = element.value;
 
-                if(element.nodeIn == 0) {           // What happens with ground here? Assuming we just ignore
+                if(element.nodeIn == 0) {
                     addToMatrix(G, element.nodeOut, current_voltage_source_offset_offset, -1);
                     addToMatrix(G, current_voltage_source_offset_offset, element.nodeOut, -1);
                 } else if (element.nodeOut == 0) {
