@@ -152,9 +152,11 @@ public class Circuit {
             double f = frequency_start;
 
             if(doLog) {
-                f += Math.pow(10, step * Math.log10(frequency_range)/num_frequency_steps);
+                if(step != 0) { // Special case for log so that we evaluate the start frequency as well.
+                    f += Math.pow(10, (step - 1) * Math.log10(frequency_range)/(num_frequency_steps - 1));
+                }
             } else {
-                f += step * frequency_range / (num_frequency_steps);
+                f += step * frequency_range / num_frequency_steps;
             }
 
             double omega = 2 * Math.PI * f;

@@ -7,24 +7,30 @@ import main.Component.ComponentType;
 
 public class CircuitSimulatorTest {
     public static void main(String[] args) {
+        ArrayList<Component> component_list = new ArrayList<>();
+
         Component vs = new Component(ComponentType.INDEPENDENT_VOLTAGE_SOURCE, "Vs", 1, 0, 10);
+        component_list.add(vs);
+
         Component r1 = new Component(ComponentType.RESISTOR, "R1", 1, 0, 1000);
+        component_list.add(r1);
+
         Component r2 = new Component(ComponentType.RESISTOR, "R2", 2, 0, 500);
+        component_list.add(r2);
+
         Component l1 = new Component(ComponentType.INDUCTOR, "L1", 2, 3, 0.0000001);
+        component_list.add(l1);
+
         Component c1 = new Component(ComponentType.CAPACITOR, "C1", 1, 2, 0.0000005);
+        component_list.add(c1);
+
         Component i1 = new Component(ComponentType.INDEPENDENT_CURRENT_SOURCE, "I1", 2, 0, 0.003);
+        component_list.add(i1);
+
         Component i2 = new Component(ComponentType.INDEPENDENT_CURRENT_SOURCE, "I2", 3, 0, 0.007);
+        component_list.add(i2);
 
-        ArrayList<Component> circuit_list = new ArrayList<>();
-        circuit_list.add(vs);
-        circuit_list.add(r1);
-        circuit_list.add(r2);
-        circuit_list.add(l1);
-        circuit_list.add(c1);
-        circuit_list.add(i1);
-        circuit_list.add(i2);
-
-        Circuit circuit = new Circuit(circuit_list);
+        Circuit circuit = new Circuit(component_list);
 
         double[] dc = circuit.do_DC_simulation();
 
